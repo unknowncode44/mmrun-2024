@@ -108,7 +108,7 @@ header .menu-button ion-icon.inactive {
 .home {
     display: flex;
     height: 100dvh;
-    background: linear-gradient(to top, #ddabfb 30%, #44226d);
+    background: linear-gradient(to top, #44226d 30%, #ddabfb);
 }
 
 .home img {
@@ -282,7 +282,7 @@ header .menu-button ion-icon.inactive {
     }
 
     .home p {
-        top: 45%;
+        top: 55%;
         font-size: 1.4em;
     }
 

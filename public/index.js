@@ -4,7 +4,7 @@ let screenSize = window.innerWidth
 const header = document.getElementById("header")
 const nav = document.getElementById("nav")
 const menubutton = document.getElementById("mbtn")
-const menuOpen = false
+var menuOpen = false
 const mcloseIcon = document.getElementById("mclose")
 const mopenIcon = document.getElementById("mbars")
 const mobileMenu = document.getElementById("mmenu") 
@@ -25,18 +25,18 @@ else {
 // display mobile menu
 function openMenu() {
     if(menuOpen == false) {
+        menuOpen = true
         menubutton.classList.add("active")
         mopenIcon.classList.add("inactive")
         mcloseIcon.classList.remove("inactive")
         mobileMenu.classList.add("active")
-        menuOpen = true
     }
     else {
+        menuOpen = false
         menubutton.classList.remove("active")
         mopenIcon.classList.remove("inactive")
         mcloseIcon.classList.add("inactive")
         mobileMenu.classList.remove("active")
-        menuOpen = false
     }
 }
 

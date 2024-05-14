@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripcion | MMRUN24</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="page" class="site" >
+        <div class="container">
+            <div class="form-box">
+                <div class="progress">
+                    <div class="logo"><h1>mm<span class="ar">r</span><span class="twenty-four">24</span></h1></div>
+                    <ul class="progress-steps">
+                        <li class="step active">
+                            <span>1</span>
+                            <p>Datos Personales</p>
+                        </li>
+                        <li class="step">
+                            <span>2</span>
+                            <p>Contacto</p>
+                        </li>
+                        <li class="step">
+                            <span>3</span>
+                            <p>Datos de Inscripcion</p>
+                        </li>
+                        <li class="step">
+                            <span>4</span>
+                            <p>Resumen y Pago</p>
+                        </li>
+                    </ul>
+                </div>
+                <form action="">
+
+                    <!-- Datos Personales -->
+                    <div class="form-one form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Datos Personales</h2>
+                        <p>Ingresá tu información personal</p>
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" name="firstname" placeholder="Nombre">
+                        </div>
+                        <div>
+                            <label>Apellido</label>
+                            <input type="text" name="lastname" placeholder="Apellido">
+                        </div>
+                        <div>
+                            <label>DNI</label>
+                            <input type="text" pattern="[0-9]*" name="dni" value="" min="0" max="99999999" placeholder="00000000">
+                        </div>
+                        <div>
+                            <label>Genero</label>
+                            <select name="genre" id="genre" placeholder="Genero" selectedIndex="0">
+                                <option value="Femenino">Femenino</option>
+                                <option value="Masculino">Masculino</option>
+                            </select>
+                        </div>
+
+                        <div class="birth">
+                            <label>Fecha de nacimiento</label>
+                            <div class="grouping">
+                                <input type="text" pattern="[0-9]*" name="day" value="" min="0" max="31">
+                                <input type="text" pattern="[0-9]*" name="month" value="" min="0" max="12">
+                                <input type="text" pattern="[0-9]*" name="year" value="" min="0" max="2024">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Datos de contacto -->
+                    <div class="form-two form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Datos de contacto</h2>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
