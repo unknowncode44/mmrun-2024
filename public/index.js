@@ -4,11 +4,14 @@ let screenSize = window.innerWidth
 const header = document.getElementById("header")
 const nav = document.getElementById("nav")
 const menubutton = document.getElementById("mbtn")
-const menuOpen = false
+var menuOpen = false
 const mcloseIcon = document.getElementById("mclose")
 const mopenIcon = document.getElementById("mbars")
 const mobileMenu = document.getElementById("mmenu") 
 const suscribeBtn = document.getElementById("suscribe-btn")
+const logo = document.getElementById("logo")
+const subtitle = document.getElementById("logo-subtitle")
+const foto1 = document.getElementById("foto1")
 
 if(screenSize < 450) {
     console.info("inner menor a 450")
@@ -40,10 +43,7 @@ function openMenu() {
     }
 }
 
-// parallax effect
-
-const logo = document.getElementById("logo")
-const subtitle = document.getElementById("logo-subtitle")
+// parallax effect only for desktop
 
 if(screenSize > 600) {
     document.addEventListener('scroll', function(){
@@ -51,5 +51,6 @@ if(screenSize > 600) {
         // header.style.marginTop = value + 'px'
         logo.style.marginTop = value + 'px'
         subtitle.style.marginTop = value + 'px'
+       
     })
 }

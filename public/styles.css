@@ -294,8 +294,42 @@ header .menu-button ion-icon.inactive {
         font-size: 60px;
     }
 
-    .about p {
+    .about-wrapper {
+        width: 100%;
+        max-width: 100%;
+        height: 70dvh;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .about-wrapper .about-col1 {
+        width: 50%;
+    }
+
+    .about-wrapper .about-col2 {
+        width: 50%;
+        padding: 0px 32px;
+    }
+
+    .about-wrapper .about-col2 .img-wrapper {
+        width: 100%;
+        height: 100%;
+        background: #00FABA;
+        border-radius: 35px;
+        padding: 5%;
+        top: 0;
+        
+    }
+    
+    .about-wrapper .about-col2 .img-wrapper img {
+        height: 110%;
+        border-radius: 35px;
+        margin: 0 auto;
+    }
+
+    .about .about-wrapper .about-col1 p {
         font-size: 1.5em;
+        text-align: justify;
     }
 
     
