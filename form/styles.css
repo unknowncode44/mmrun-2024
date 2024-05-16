@@ -3,25 +3,115 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
 
+*,::before, ::after{
+    box-sizing: border-box;
+}
 
+:root {
+    --main-color: #5247B9;
+    --secondary-color: #00FABA;
+    --lighter-color: #e0e0e7;
+    --light-color: #b0b0c0;
+    --dark-color: #52505e;
+}
 
-/* Logo */
-.logo h1 {
-    font-size: 2em;
-    font-weight: 800;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--dark-color);
+    /* background: var(--dark-color); */
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0 0 0.5em;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.2em;
+}
+.form-box {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5em;
+    border: 8px solid var(--light-color);
+    border-radius: 15px;
+    background-color: #faf9ff;
+}
+
+.form-box .progress {
+    position: relative;
+    padding: 1em;
+}
+
+.form-box .logo {
+    font-size: 1.75em;
     text-transform: uppercase;
     font-style: italic;
+    text-align: center;
+}
+
+.form-box .logo h1 {
+    font-weight: 800;
     color: white;
 }
 
-.logo h1 .ar {
+.form-box .logo h1 .ar {
     color: #00FABA;
 }
 
-.logo h1 .twenty-four {
+.form-box .logo h1 .twenty-four {
     color: #00FABA;
 }
+
+/* progress steps */
+.progress ul.progress-steps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+
+
+
+@media screen and (min-width: 768px) {
+    .form-box .progress {
+        flex: 1 0 35%;
+        min-width: 300px;
+        padding: 3em;
+    }
+    .form-box .logo {
+        margin: -48px -48px 48px;
+    }
+}
+
+

@@ -71,9 +71,56 @@
                     <!-- Datos de contacto -->
                     <div class="form-two form-step">
                         <div class="bg-svg"></div>
-                        <h2>Datos de contacto</h2>
+                        <h2>Contacto</h2>
+                        <p>Ingresa tus datos de contacto</p>
+                        <div>
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="email@mail.com">
+                        </div>
+                        <div>
+                            <label>Telefono</label>
+                            <input type="tel" name="phone" placeholder="299xxxxxxx">
+                        </div>
+                        <div>
+                            <label>Ciudad</label>
+                            <input type="text" name="city" placeholder="Ingresa Ciudad">
+                        </div>
                     </div>
 
+                    <!-- Datos de inscripcion -->
+                    <div class="form-three form-step">
+                        <div class="bg-svg"></div>
+                        <h2>Datos de Inscripcion</h2>
+                        <p>Ingresá tu información de inscripcion</p>
+                        <div>
+                            <label>Circuito</label>
+                            <select name="category" id="category" placeholder="Circuito" selectedIndex="0">
+                                <option value="21k">Circuito 21k $25500</option>
+                                <option value="5k">Circuito 5k $20000</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Talle Camiseta</label>
+                            <select name="tshirt-size" id="tshirt-size" placeholder="Talle Camiseta" selectedIndex="0">
+                                <option value="talle_s">Camiseta Talle S</option>
+                                <option value="talle_m">Camiseta Talle M</option>
+                                <option value="talle_l">Camiseta Talle L</option>
+                                <option value="talle_xl">Camiseta Talle XL</option>
+                                <option value="talle_xxl">Camiseta Talle XXL</option>
+                            </select>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" name="check-partner">
+                            <label>Socio del club Marimenuco</label>
+                            <label>Numero de socio</label>
+                            <input type="text" name="partner-number" disabled>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn-prev" disabled>Anterior</button>
+                        <button type="button" class="btn-next">Siguiente</button>
+                        <button type="button" class="btn-submit">Confirmar</button>
+                    </div>
 
                 </form>
             </div>
