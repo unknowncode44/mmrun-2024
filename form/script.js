@@ -1,7 +1,7 @@
-const nextButton = document.querySelector           (   '.btn-next'    );
-const prevButton = document.querySelector           (   '.btn-prev'    );
-const steps      = document.querySelectorAll        (   '.step'        );
-const form_steps = document.querySelectorAll        (   '.form-step'   );
+const nextButton    = document.querySelector           (   '.btn-next'    );
+const prevButton    = document.querySelector           (   '.btn-prev'    );
+const steps         = document.querySelectorAll        (   '.step'        );
+const form_steps    = document.querySelectorAll        (   '.form-step'   );
 
 const partnerCheckbox = document.querySelector      (   'input[name="check-partner"]'   );
 const partnerNumberInput = document.querySelector   (   'input[name="partner-number"]'  );
