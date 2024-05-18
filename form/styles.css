@@ -162,7 +162,7 @@ form > div p {
     margin-bottom: 2em;
 }
 
-form > div:not(.checkbox) {
+form  > div > div:not(.checkbox) {
     display: flex;
     flex-direction: column;
     margin-bottom: 2em;
@@ -197,9 +197,30 @@ form .checkbox input {
     height: auto;
 }
 
-/* button */
+form> div:not(.btn-group){
+    display: none;
+    -webkit-animation: fadeIn .6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    animation: fadeIn .6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
 
-.form-two, .form-three {display: none;}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        webkit-transform: translateY(10%);
+        transform: translateY(10%);
+    }
+    100% {
+        opacity: 1;
+        webkit-transform: translateY(0%);
+        transform: translateY(0%);
+    }
+}
+
+form> div.active {
+    display: block;
+}
+
+/* button */
 
 .btn-group {
     display: flex;
@@ -229,12 +250,22 @@ form .checkbox input {
     border-color: var(--light-color);
 }
 
+.btn-group .btn-submit,
+.form-three.active ~ .btn-group .btn-next {
+    display: none;
+}
+
+.form-three.active ~ .btn-group .btn-submit {
+    display: block;
+}
+
+.form-three.active ~ .btn-group {
+    justify-content: space-between;
+}
+
 ::placeholder {
     color: var(--light-color);
 }
-
-
-
 
 @media screen and (min-width: 768px) {
 
