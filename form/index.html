@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripcion | MMRUN24</title>
+    <title>Inscripción | MMRUN24</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <div id="page" class="site" >
+    <div id="page" class="site">
         <div class="container">
             <div class="form-box">
                 <div class="progress">
-                    <div class="logo"><h1>mm<span class="ar">r</span><span class="twenty-four">24</span></h1></div>
+                    <div class="logo">
+                        <h1>mm<span class="ar">r</span><span class="twenty-four">24</span></h1>
+                    </div>
                     <ul class="progress-steps">
                         <li class="step active">
                             <span>1</span>
@@ -23,7 +27,7 @@
                         </li>
                         <li class="step">
                             <span>3</span>
-                            <p>Datos de Inscripcion</p>
+                            <p>Datos de Inscripción</p>
                         </li>
                         <li class="step">
                             <span>4</span>
@@ -31,7 +35,7 @@
                         </li>
                     </ul>
                 </div>
-                <form action="">
+                <form action="" id="form">
 
                     <!-- Datos Personales -->
                     <div class="form-one form-step active">
@@ -40,19 +44,20 @@
                         <p>Ingresá tu información personal</p>
                         <div>
                             <label>Nombre</label>
-                            <input type="text" name="firstname" placeholder="Nombre">
+                            <input type="text" name="firstname" class="items" placeholder="Nombre">
                         </div>
                         <div>
                             <label>Apellido</label>
-                            <input type="text" name="lastname" placeholder="Apellido">
+                            <input type="text" name="lastname" class="items" placeholder="Apellido">
                         </div>
                         <div>
                             <label>DNI</label>
-                            <input type="text" pattern="[0-9]*" name="dni" value="" min="0" max="99999999" placeholder="00000000">
+                            <input type="text" pattern="[0-9]*" name="dni" value="" min="0" max="99999999"
+                                placeholder="00000000" class="items">
                         </div>
                         <div>
                             <label>Genero</label>
-                            <select name="genre" id="genre" placeholder="Genero" selectedIndex="0">
+                            <select name="runnerGenre" class="items" placeholder="Genero" selectedIndex="0">
                                 <option value="Femenino">Femenino</option>
                                 <option value="Masculino">Masculino</option>
                             </select>
@@ -61,9 +66,12 @@
                         <div class="birth">
                             <label>Fecha de nacimiento</label>
                             <div class="grouping">
-                                <input type="text" pattern="[0-9]*" name="day" value="" min="0" max="31" placeholder="DD">
-                                <input type="text" pattern="[0-9]*" name="month" value="" min="0" max="12" placeholder="MM">
-                                <input type="text" pattern="[0-9]*" name="year" value="" min="0" max="2024" placeholder="YYYY">
+                                <input type="number" pattern="[0-9]*" id="day" class="items" name="day" value="" min="0"
+                                    max="31" placeholder="DD">
+                                <input type="number" pattern="[0-9]*" id="month" class="items" name="month" value=""
+                                    min="0" max="12" placeholder="MM">
+                                <input type="number" pattern="[0-9]*" id="year" class="items" name="year" value=""
+                                    min="0" max="2024" placeholder="YYYY">
                             </div>
                         </div>
                     </div>
@@ -75,33 +83,33 @@
                         <p>Ingresa tus datos de contacto</p>
                         <div>
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="email@mail.com">
+                            <input type="email" class="items" name="email" placeholder="email@mail.com">
                         </div>
                         <div>
-                            <label>Telefono</label>
-                            <input type="tel" name="phone" placeholder="299xxxxxxx">
+                            <label>Teléfono</label>
+                            <input type="tel" class="items" name="phone_nbr" placeholder="299xxxxxxx">
                         </div>
                         <div>
                             <label>Ciudad</label>
-                            <input type="text" name="city" placeholder="Ingresa Ciudad">
+                            <input type="text" class="items" name="city" placeholder="Ingresa Ciudad">
                         </div>
                     </div>
 
-                    <!-- Datos de inscripcion -->
+                    <!-- Datos de inscripción -->
                     <div class="form-three form-step">
                         <div class="bg-svg"></div>
-                        <h2>Datos de Inscripcion</h2>
-                        <p>Ingresá tu información de inscripcion</p>
+                        <h2>Datos de Inscripción</h2>
+                        <p>Ingresá tu información de inscripción</p>
                         <div>
                             <label>Circuito</label>
-                            <select name="category" id="category" placeholder="Circuito" selectedIndex="0">
-                                <option value="21k">Circuito 21k $25500</option>
-                                <option value="5k">Circuito 5k $20000</option>
+                            <select name="category" id="category" class="items" placeholder="Circuito"
+                                selectedIndex="-1">
+                                <!-- Categoría: title -->
                             </select>
                         </div>
                         <div>
                             <label>Talle Camiseta</label>
-                            <select name="tshirt-size" id="tshirt-size" placeholder="Talle Camiseta" selectedIndex="0">
+                            <select name="tshirtSize" class="items" placeholder="Talle Camiseta" selectedIndex="0">
                                 <option value="talle_s">Camiseta Talle S</option>
                                 <option value="talle_m">Camiseta Talle M</option>
                                 <option value="talle_l">Camiseta Talle L</option>
@@ -110,16 +118,27 @@
                             </select>
                         </div>
                         <div class="checkbox">
-                            <input type="checkbox" name="check-partner">
+                            <input type="checkbox" class="items" name="check-partner">
                             <label>Socio del club Marimenuco</label>
-                            <label>Numero de socio</label>
-                            <input type="text" name="partner-number" disabled>
+                            <div>
+                                <label>Numero de socio</label>
+                                <input type="text" class="items" name="partnerID" disabled
+                                    placeholder="Ingrese número de socio">
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Datos finales -->
+                    <div class="form-four form-step">
+                        <div class="bg-svg"></div>
+                        <h2 id="next-element">Resumen y Pago</h2>
+                    </div>
+
+
                     <div class="btn-group">
                         <button type="button" class="btn-prev" disabled>Anterior</button>
                         <button type="button" class="btn-next">Siguiente</button>
-                        <button type="button" class="btn-submit">Confirmar</button>
+                        <button type="button" class="btn-submit" onclick="getFormData()">Confirmar</button>
                     </div>
 
                 </form>
@@ -127,5 +146,7 @@
         </div>
     </div>
     <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>
