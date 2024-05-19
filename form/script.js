@@ -274,7 +274,9 @@ function showData() {
   nextEl.insertAdjacentElement("afterend", div);
 }
 
-function getFormData() {
+async function getFormData() {
+  const inputs = document.getElementsByClassName("items");
+  const category = categories.find((item) => item.title === inputs[10].value);
   var formulario = document.getElementById("form");
   var formData = new FormData(formulario);
   let name = "";
@@ -303,7 +305,74 @@ function getFormData() {
   var age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
   formData.append("runnerAge", age);
 
+  //* agregamos el item para crear la preferencia:
+  //! Some random item (test only)
+  formData.append("title", "MMRUN'2024");
+  formData.append("description", category ? category.title : "No especificado");
+  formData.append("quantity", 1);
+  formData.append("currency_id", "ARS");
+  formData.append("unit_price", category ? category.precio : 0);
+
   for (const entry of formData.entries()) {
     console.log(entry[0], entry[1]);
   }
+
+  const url =
+    "https://h6zhw7lw-3088.brs.devtunnels.ms/api/mercadopago/create-preference";
+
+  const options = {
+    method: "POST",
+    body: formData,
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data.init_point);
+      window.location.href = data.sandbox_init_point;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
+
+function handleQueryParamChange() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramValue = urlParams.get("status");
+  console.log(paramValue);
+
+  switch (paramValue) {
+    case "approved": {
+      Swal.fire({
+        title: "Éxito",
+        text: "El pago fue acreditado con éxito. Puede inscribir otro corredor, o volver a la página principal.",
+        icon: "success",
+        showDenyButton: true,
+        confirmButtonText: "Inscribir otro corredor",
+        denyButtonText: "Volver a la web principal",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "http://127.0.0.1:5500/index.html";
+        } else {
+          window.location.href = "https://mmrun.hvdevs.com/";
+        }
+      });
+      break;
+    }
+    case "rejected": {
+      Swal.fire({
+        title: "Error",
+        text: "Algo salió mal con la petición",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+      break;
+    }
+  }
+}
+
+// EventListener para detectar cambios en la URL
+window.addEventListener("popstate", handleQueryParamChange);
+
+handleQueryParamChange();
