@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body class="no-overflow">
     <div id="page" class="site">
         <div class="container">
             <div class="form-box">
@@ -139,11 +139,16 @@
                     <div class="btn-group">
                         <button type="button" class="btn-prev" disabled>Anterior</button>
                         <button type="button" class="btn-next">Siguiente</button>
-                        <button type="button" class="btn-submit" onclick="getFormData()">Confirmar</button>
+                        <button type="button" class="btn-submit" id="btn-submit"
+                            onclick="getFormData()">Confirmar</button>
                     </div>
 
                 </form>
             </div>
+        </div>
+
+        <div class="full-screen no-display" id="spinner">
+            <span class="loader"></span>
         </div>
     </div>
     <script src="./script.js"></script>

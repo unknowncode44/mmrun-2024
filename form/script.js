@@ -1,5 +1,6 @@
 const nextButton = document.querySelector(".btn-next");
 const prevButton = document.querySelector(".btn-prev");
+const subButton = document.getElementById("btn-submit");
 const steps = document.querySelectorAll(".step");
 const form_steps = document.querySelectorAll(".form-step");
 
@@ -275,6 +276,8 @@ function showData() {
 }
 
 async function getFormData() {
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("no-display");
   const inputs = document.getElementsByClassName("items");
   const category = categories.find((item) => item.title === inputs[10].value);
   var formulario = document.getElementById("form");
@@ -327,13 +330,23 @@ async function getFormData() {
 
   try {
     const response = await fetch(url, options);
+    spinner.classList.add("no-display");
     if (response.ok) {
+      subButton.disabled = true;
       const data = await response.json();
       console.log(data.init_point);
-      window.location.href = data.sandbox_init_point;
+      window.location.href = data.init_point;
     }
   } catch (error) {
     console.log(error);
+    spinner.classList.add("no-display");
+    subButton.disabled = false;
+    Swal.fire({
+      title: "Error",
+      text: "Algo salió mal con la petición",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   }
 }
 
