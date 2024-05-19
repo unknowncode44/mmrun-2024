@@ -7,6 +7,8 @@
     font-family: "Montserrat", sans-serif;
 }
 
+
+
 /* mobile */
 header {
     display: flex;
@@ -74,7 +76,7 @@ header .menu-button ion-icon.inactive {
 }
 
 .mobile-nav {
-    position: absolute;
+    position: fixed;
     margin-top: 100px;
     width: 100%;
     height: 0px;
@@ -82,6 +84,7 @@ header .menu-button ion-icon.inactive {
     flex-direction: column;
     padding: 4px 8px;
     transition: 0.3s;
+    z-index: 2000;
 }
 
 .mobile-nav a {
@@ -108,7 +111,7 @@ header .menu-button ion-icon.inactive {
 .home {
     display: flex;
     height: 100dvh;
-    background: linear-gradient(to top, #44226d 30%, #ddabfb);
+    background: linear-gradient(to top, #3b3291 40%, #ddabfb);
 }
 
 .home img {
@@ -155,6 +158,10 @@ header .menu-button ion-icon.inactive {
     margin: auto;
 }
 
+
+
+
+
 .home .suscribe-btn.desktop {
     display: none;
 }
@@ -165,17 +172,344 @@ header .menu-button ion-icon.inactive {
     position: relative;
     background: #3b3291;
     width: 100%;
-    padding: 40px;
+    padding: 100px 40px 10px 40px;
     color: #fff;
     z-index: 100;
 
 }
 
-.about h1 {
+.about .about-container .column-1 {
+    width: 100%;
+}
+
+.about .about-container .column-1 .separator {
+    height: 0px;
+}
+
+.about .about-container .column-2 {
+    display: none;
+}
+
+.about-container .column-1 h2 {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00FABA;
+    font-style: italic;
+
+}
+
+.about .about-container .column-1 h1 {
     font-weight: 800;
     text-transform: capitalize;
 
 }
+
+.about .stats {
+    width: 100%;
+    padding: 8px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about .stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.about .stats .stat h1.number {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.about .stats .stat p.detail {
+    font-weight: 600;
+    font-size: 0.9em;
+    font-style: italic;
+    text-transform: uppercase;
+    color: #00FABA;
+}
+
+/* circuitos */
+section.categories {
+    background-image: url("DSC_0022.jpg");
+    height: 100%;
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 40px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+
+}
+section.categories h1.cat-title {
+    width: 100%;
+    margin: 48px auto 16px auto;
+    text-align: center;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-style: italic;
+    
+
+}
+
+section.categories .category {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: 0.2s;
+    text-align: center;
+    position: relative;
+}
+
+section.categories .category.active {
+    height: 100%;
+}
+
+section.categories .category .km {
+    height: 10%;
+    z-index: 1999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+}
+
+section.categories .category .km h1 {
+    font-weight: 900;
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 2px 2px 0 #00000058, 2px 2px 2px rgba(41,18,11,0);
+    text-transform: uppercase;
+}
+
+section.categories .category .km.active {
+    top: 10%;
+}
+
+section.categories .category .cat-info-container {
+    width: 100%;
+    height: 100%;
+    background: #00FABA;
+    border-radius: 15px;
+    padding: 2.5rem 8px;
+}
+
+section.categories .category .cat-info-container ul {
+    list-style: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 0px 8px;
+    font-style: italic;
+    flex-direction: column;
+    margin-top: 20%;
+} 
+
+section.categories .category .cat-info-container ul li {
+    margin: 12px 0px;
+    text-align: start;
+    font-size: 1.2em;
+    width: 100%;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #3b3291;
+    color: #00FABA;
+    border-radius: 2px 2px 5px 5px;
+    padding: 4px 8px;
+    
+    
+}
+
+section.categories .category .cat-info-container ul li.price {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 1.4em;
+    
+    
+}
+
+section.categories .category .cat-info-container ul li.price p {
+    font-weight: 600;
+}
+
+section.categories .category .cat-info-container ul li p {
+    color: #3b3291;
+    font-size: 0.9em;
+    font-weight: 400;
+    margin: 1px 0px;
+    padding: 4px 0px;
+    text-align: center;
+    background: #00FABA;
+    border-radius: 2px 2px 5px 5px;
+}
+
+section.categories .category .cat-info-container .suscribe-btn {
+    border-radius: 15px;
+    background: #3b3291;
+    color: white;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+    padding: 16px 30%;
+    margin: auto 12px;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+section.categories .sponsors-bar {
+    width: 100%;
+    height: 140px;
+    background: #3b3291;
+    position: absolute;
+    bottom: -10%;
+    left: 0px;
+    padding: 4px 8px; 
+    text-align: center;
+}
+
+section.categories .sponsors-bar h1 {
+    font-weight: 800;
+    color: #fff;
+    font-style: italic;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
+
+
+/* sponsors */
+
+section.sponsors {
+    background-image: url("MDM_9012f.jpg");
+    height: 75dvh;
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+
+section.sponsors .nav-cover {
+    width: 100%;
+    height: 120px;
+    background: #3b3291;
+    padding: 0;
+    margin: 0px;
+}
+
+footer {
+    height: 250px;
+    width: 100%;
+    background: #00FABA;
+    padding-top: 0.5em;
+}
+
+footer .social-media-container {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0px 12%;
+}
+
+footer .social-media-container a {
+    font-size: 2em;
+    color: #3b3291;
+}
+
+footer .social-media-container h4 {
+    display: none;
+}
+
+footer .logo-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .logo-container img {
+    width: 240px;
+}
+
+footer .logo-container p {
+    font-weight: 400;
+    color: #3b3291;
+    margin: 0px 0px;
+}
+
+footer .logo-container p span {
+    font-weight: 600;
+
+}
+
+footer .hvdevs {
+    margin-top: 8px;
+    width: 100%;
+    height: 40px;
+    font-size: 1.2em;
+    color: #00FABA;
+    text-align: center;
+    background: #3b3291;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+footer .hvdevs p {
+    margin: 2px 0px;
+}
+
+footer .hvdevs p span {
+    color: #fff;
+}
+
+footer .hvdevs img {
+    display: none;
+}
+
+
+
+footer .hvdevs p a {
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* 1920 x 1282 */
+
 
 
 /* desktop */
@@ -187,7 +521,6 @@ header .menu-button ion-icon.inactive {
         gap: 8px;
     }
 
-    
     header nav a {
         text-decoration: none;
         text-transform: uppercase;
@@ -225,10 +558,187 @@ header .menu-button ion-icon.inactive {
         top: 50%;
     }
 
+    .about {
+        padding-top: 120px;
+    }
+
     .about p {
         font-size: 1.4em;
     }
 
+    .about .about-container .column-1 .separator {
+        height: 80px;
+    }
+
+    .about .about-container .column-2 img {
+        width: 65%;
+    }
+
+    .about .stats {
+        width: 100%;
+        padding: 8px 1em 8px 60%;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .about .stats .stat p.detail {
+        font-size: 1em;
+    }
+    
+
+    /* circuitos */
+    section.categories {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-top: 120px;
+        /* margin: auto 0px; */
+        height: 100dvh;
+        position: relative;
+    }
+
+    
+    section.categories h1.cat-title {
+        margin: auto 0px;
+    }
+
+    section.categories .category  {
+        margin: auto 0px;
+        cursor: pointer;;
+
+        
+    }
+
+    section.categories .category .cat-info-container ul {
+        font-size: 1em;
+    } 
+    
+    section.categories .category .cat-info-container ul li {
+        margin: 8px 0px;
+        text-align: start;
+        font-size: 1.1em;
+        
+        
+    }
+    
+    section.categories .category .cat-info-container ul li.price {
+        margin-top: 32px;
+        text-align: center;
+        font-size: 1.4em;
+        
+        
+    }
+    
+    section.categories .category .cat-info-container ul li.price p {
+        font-weight: 600;
+    }
+    
+    section.categories .category .cat-info-container ul li p {
+        color: #3b3291;
+        font-size: 0.9em;
+        font-weight: 400;
+        margin: 1px 0px;
+        padding: 4px 0px;
+        text-align: center;
+        background: #00FABA;
+        border-radius: 2px 2px 5px 5px;
+    }
+
+    section.categories .sponsors-bar {
+        width: 100%;
+        height: 140px;
+        background: #3b3291;
+        position: absolute;
+        bottom: -15%;
+        padding: 4px 8px; 
+        text-align: center;
+    }
+    
+    section.categories .sponsors-bar h1 {
+        font-weight: 800;
+        color: #fff;
+        font-style: italic;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+    }
+
+    section.categories .category .cat-info-container .suscribe-btn {
+        padding: 16px 30%;
+        margin: auto 12px;
+        text-align: center;
+        color: #fff;
+        font-size: 1.2em;
+    }
+
+    footer {
+        padding: 0px 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    footer .logo-container {
+        padding: 0 8px;
+        width: 20%;
+
+    }
+
+    footer .separator {
+        width: 40%;
+    }
+
+    footer .social-media-container {
+        display: flex;
+        flex-direction: column;
+        padding: 16px 8px;
+        width: 20%;
+        height: 100%;
+    }
+
+    footer .social-media-container h4 {
+        display: block;
+        font-size: 1.2em;
+        text-align: center;
+        font-style: italic;
+        text-transform: uppercase;
+        color: #3b3291;
+        font-weight: 800;
+    }
+
+    footer .hvdevs {
+        width: 20%;
+        height: 90%;
+        background: #00FABA;
+        justify-content: flex-end;
+        padding: 8px 0;
+    }
+
+    footer .hvdevs p {
+        color: #3b3291;
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    footer .hvdevs p a {
+        display: none;
+    }
+
+    footer .hvdevs p span {
+        color: #3b3291;
+    }
+
+    footer .hvdevs p span.rocket {
+        display: none;
+    }
+
+    footer .hvdevs img {
+        display: block;
+        width: 200px;
+    }
 
 
 }
@@ -286,19 +796,50 @@ header .menu-button ion-icon.inactive {
         font-size: 1.4em;
     }
 
-    .about {
-        padding: 120px 60px;
+
+
+    .about .about-container {
+        display: flex;
+        flex-direction: row;
+        max-width: 100%;
+        justify-content: space-between;
+        padding: 8px 16px;
     }
 
-    .about h1 {
-        font-size: 60px;
+    .about .about-container .column-1 {
+        width: 55%;
+        padding: 8px 32px;
     }
 
-    .about p {
-        font-size: 1.5em;
+    .about .about-container .column-1 h2 {
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #00FABA;
+        font-style: italic;
+
     }
 
-    
+    .about .about-container .column-1 h1 {
+        font-weight: 800;
+        text-transform: capitalize;
+
+    }
+
+    .about .about-container .column-1 p {
+        font-size: 1.2em;
+
+    }
+
+    .about .about-container .column-2 {
+        width: 40%;
+        max-width: 40%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+    }
+
 
 }
 

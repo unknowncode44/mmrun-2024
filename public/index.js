@@ -1,5 +1,20 @@
 let screenSize = window.innerWidth
 
+var home = document.getElementById("home")
+
+var circuits = []
+
+window.onload = async function() {
+    let response = await fetch('https://api.mmrun.hvdevs.com/categories')
+    let result = await response.json()
+    for (let i = 0; i < result.length; i++) {
+        const element = result[i];
+        circuits.push(element)
+    }
+    addCategories(circuits)
+    
+}
+
 // show and hide nav in mobile 
 const header = document.getElementById("header")
 const nav = document.getElementById("nav")
@@ -9,6 +24,9 @@ const mcloseIcon = document.getElementById("mclose")
 const mopenIcon = document.getElementById("mbars")
 const mobileMenu = document.getElementById("mmenu") 
 const suscribeBtn = document.getElementById("suscribe-btn")
+
+const catSection = document.getElementById("cat-sect")
+
 
 if(screenSize < 450) {
     console.info("inner menor a 450")
@@ -21,6 +39,7 @@ else {
     suscribeBtn.classList.add("desktop")
 
 }
+
 
 // display mobile menu
 function openMenu() {
@@ -40,16 +59,194 @@ function openMenu() {
     }
 }
 
+// expand category 
+let expanded = false
+
+
 // parallax effect
 
 const logo = document.getElementById("logo")
 const subtitle = document.getElementById("logo-subtitle")
 
+document.addEventListener('scroll', function(){
+    let val = window.scrollY
+    
+    if(menuOpen = true) {
+        menuOpen = false
+        menubutton.classList.remove("active")
+        mopenIcon.classList.remove("inactive")
+        mcloseIcon.classList.add("inactive")
+        mobileMenu.classList.remove("active")
+    }
+    
+})
+
 if(screenSize > 600) {
     document.addEventListener('scroll', function(){
+        
         let value = window.scrollY
-        // header.style.marginTop = value + 'px'
-        logo.style.marginTop = value + 'px'
-        subtitle.style.marginTop = value + 'px'
+        if(value < 750){
+            // console.info(value)
+            logo.style.marginTop = value + 'px'
+            subtitle.style.marginTop = value + 'px'
+        }
     })
 }
+const categorySection = document.getElementById('cat-sect')
+var categories = [
+    {
+        title: "21k"
+    },
+    {
+        title: "10k"
+    },
+    {
+        title: "5k"
+    },
+    {
+        title: "KIDS"
+    },
+]
+
+
+function addCategories(arrayOfCategories) {
+    let _categories = arrayOfCategories
+    for (let i = 0; i < _categories.length; i++) {
+        console.info("appending cat")
+        const e = _categories[i];
+        var category = document.createElement('div')
+        category.classList.add("category")
+        
+        var km = document.createElement('div')
+        km.classList.add("km")
+        
+        var catInfoCont = document.createElement('div')
+        catInfoCont.classList.add("cat-info-container")
+        var title = document.createElement("h1")
+        title.textContent = e.title
+        km.appendChild(title)
+        category.appendChild(km)
+        category.appendChild(catInfoCont)
+        categorySection.appendChild(category)
+
+        catInfoCont.setAttribute('id', "cat-info"+i)        
+        category.setAttribute('id', "category"+i)
+        
+        km.setAttribute('id', "km"+i)
+
+        var suscBtn = document.createElement("div")
+        suscBtn.classList.add("suscribe-btn")
+        suscBtn.textContent = "Inscribirse"
+        suscBtn.setAttribute('id', "suscBtn"+i)
+
+        // creamos un ul y los li
+        let ul = document.createElement("ul")
+        let liCategories = document.createElement("li")
+        let liCircuito = document.createElement("li")
+        let liKitCorredor = document.createElement("li")
+        let liLargada = document.createElement("li")
+        let liPrecio = document.createElement("li")
+
+        ul.setAttribute('id', "ul"+i)
+    
+        ul.appendChild(liLargada)
+        ul.appendChild(liKitCorredor)
+        ul.appendChild(liCategories)
+        ul.appendChild(liCircuito)
+        ul.appendChild(liPrecio)
+    
+        catInfoCont.appendChild(ul)
+        catInfoCont.appendChild(suscBtn)
+        liPrecio.classList.add("price")
+
+        let largadaP = document.createElement("p") 
+        largadaP.textContent = e.largada
+        liLargada.textContent = "Largada"
+        liLargada.appendChild(largadaP)
+
+        let kitCorredorP = document.createElement("p")
+        kitCorredorP.textContent = e.kit_corredor
+        liKitCorredor.textContent ="Kit Corredor"
+        liKitCorredor.appendChild(kitCorredorP)
+
+        let categoriesP = document.createElement("p")
+        categoriesP.textContent = e.categories
+        liCategories.textContent = "Categorias"
+        liCategories.appendChild(categoriesP)
+
+        let circuitoP = document.createElement("p")
+        circuitoP.textContent = e.circuito
+        liCircuito.textContent = "Circuito"
+        liCircuito.appendChild(circuitoP)
+
+        let precioP = document.createElement("p")
+        precioP.textContent = "$ "+ e.precio+".00"
+        liPrecio.textContent = "Precio"
+        liPrecio.appendChild(precioP)
+
+        ul.style.display = "none"
+        suscBtn.style.display = "none"
+
+        category.onclick = function() {
+            expandCat(i)
+        }
+
+    }
+
+
+
+}
+
+var divExpanded 
+
+function expandCat(numb) {
+
+
+    let cate = document.getElementById("category"+numb)
+    let km = document.getElementById("km"+numb)
+    let u = document.getElementById("ul"+numb)
+    let btn = document.getElementById("suscBtn"+numb)
+
+    divExpanded = numb
+    
+    if(expanded == false) {
+        expanded = true
+        console.log(numb + " " + km)
+        cate.style.height = "100%"
+       
+        u.style.display ="flex"
+        btn.style.display="flex"
+        km.style.top="10%"
+        
+        if(screenSize > 600){
+            cate.style.width = "150%"
+            btn.style.display="flex"
+        }
+
+    }
+    else {
+        expanded = false
+        cate.style.height = "100%"
+        km.style.top = "50%" 
+        u.style.display ="none"
+        btn.style.display="none"
+        if(screenSize > 600){
+            cate.style.width = "100%"
+        }   
+    }
+    
+}
+
+function collapseOther(number) {
+    let cate = document.getElementById("category"+number)
+    let km = document.getElementById("km"+number)
+    let u = document.getElementById("ul"+number)
+    let btn = document.getElementById("suscBtn"+number)
+
+    u.style.display ="none"
+    btn.style.display="none"
+    if(screenSize > 600){
+        cate.style.width = "100%"
+    }
+}
+
