@@ -6,7 +6,7 @@
     <title>MMRun'24</title>
 
     <!-- styles propios -->
-    <link rel="stylesheet" href="./public//styles.css">
+    <link rel="stylesheet" href="./public/styles.css">
     
     <!-- styles importados -->
     <link href="./public/bootsrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
             <a href="#home" class="active">Inicio</a>
             <a href="#about">La Carrera</a>
             <a href="#cat-sect">circuitos</a>
-            <a href="#">Inscribirse</a>
+            <a href="/form/index.html">Inscribirse</a>
             <a href="#">Contacto</a>
         </nav>
     </header>
@@ -43,7 +43,7 @@
         <a href="#home">Inicio</a>
         <a href="#about">La Carrera</a>
         <a href="#cat-sect">Circuitos</a>
-        <a href="#">Inscribirse</a>
+        <a href="#"><span onclick="register()">Inscribirse</span></a>
         <a href="#">Contacto</a>
     </div>
 
@@ -55,12 +55,12 @@
         <img src="./assets/mount1.png" class="mount1">
         
         <!-- suscribe icon -->      
-        <div id="suscribe-btn" class="suscribe-btn">
+        <div id="suscribe-btn" onclick="register()" class="suscribe-btn">
             Inscribirse
         </div>
 
 
-        <img id="logo" src="./assets/logo3.png" alt="" class="logo">
+        <img id="logo" src="./assets/MMR24b.png" alt="" class="logo">
         
         <img src="./assets/bush2.png" class="bush2">
         <p id="logo-subtitle">tercera edicion. <span>Septiembre 2024</span></p>
@@ -125,7 +125,7 @@
         <!-- sponsors -->
        </section>
        <section class="sponsors">
-        <div class="nav-cover"></div>
+        <div class="nav-cover"><h1>sponsors</h1></div>
     
 
        </section>

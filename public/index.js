@@ -5,7 +5,11 @@ var home = document.getElementById("home")
 var circuits = []
 
 window.onload = async function() {
-    let response = await fetch('https://api.mmrun.hvdevs.com/categories')
+    let response = await fetch(
+        'https://api.mmrun.hvdevs.com/categories', {
+            mode: 'cors'
+        }
+    )
     let result = await response.json()
     for (let i = 0; i < result.length; i++) {
         const element = result[i];
@@ -13,6 +17,12 @@ window.onload = async function() {
     }
     addCategories(circuits)
     
+}
+
+// redirect to register
+function register(){
+    let url = "https://mmrun.hvdevs.com/registro"
+    window.open(url, '_blank').focus();
 }
 
 // show and hide nav in mobile 
@@ -138,6 +148,10 @@ function addCategories(arrayOfCategories) {
         suscBtn.classList.add("suscribe-btn")
         suscBtn.textContent = "Inscribirse"
         suscBtn.setAttribute('id', "suscBtn"+i)
+
+        suscBtn.onclick = function(){
+            register()
+        }
 
         // creamos un ul y los li
         let ul = document.createElement("ul")

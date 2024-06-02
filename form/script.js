@@ -321,7 +321,7 @@ async function getFormData() {
   }
 
   const url =
-    "https://h6zhw7lw-3088.brs.devtunnels.ms/api/mercadopago/create-preference";
+    "https://mp.mmrun.hvdevs.com/api/mercadopago/create-preference";
 
   const options = {
     method: "POST",
@@ -366,7 +366,7 @@ function handleQueryParamChange() {
         denyButtonText: "Volver a la web principal",
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = "http://127.0.0.1:5500/index.html";
+          window.location.href = "https://mmrun.hvdevs.com/form/index.html";
         } else {
           window.location.href = "https://mmrun.hvdevs.com/";
         }
