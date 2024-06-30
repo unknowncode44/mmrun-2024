@@ -15,7 +15,7 @@ let labels = [
   "Fecha de nacimiento",
   "Email",
   "Teléfono",
-  "Cuidad",
+  "Ciudad",
   "Circuito",
   "Talle camiseta",
   "N° socio",
@@ -146,14 +146,14 @@ updateProgress();
 
 /* campo de texto del checkbox */
 
-partnerCheckbox.addEventListener("change", () => {
-  if (partnerCheckbox.checked) {
-    partnerNumberInput.disabled = false;
-  } else {
-    partnerNumberInput.disabled = true;
-    partnerNumberInput.value = "";
-  }
-});
+// partnerCheckbox.addEventListener("change", () => {
+//   if (partnerCheckbox.checked) {
+//     partnerNumberInput.disabled = false;
+//   } else {
+//     partnerNumberInput.disabled = true;
+//     partnerNumberInput.value = "";
+//   }
+// });
 
 /** @description Cada input tiene un rango de entrada, pasa al siguiente con focus */
 function dateListener() {
@@ -213,6 +213,8 @@ function showData() {
       // Crear el elemento div con la clase "col col-sm col-md col-lg"
       var col = document.createElement("div");
       col.className = "col col-sm col-md col-lg";
+
+      // col.className = "col col-lg";
 
       // Crear el elemento h3 con el texto del label
       var heading = document.createElement("h3");
@@ -366,9 +368,9 @@ function handleQueryParamChange() {
         denyButtonText: "Volver a la web principal",
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.href = "https://mmrun.hvdevs.com/form/index.html";
+          window.location.href = "https://mmrun.com.ar/form/index.html";
         } else {
-          window.location.href = "https://mmrun.hvdevs.com/";
+          window.location.href = "https://mmrun.com.ar/";
         }
       });
       break;

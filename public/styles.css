@@ -853,6 +853,35 @@ footer .hvdevs p a {
 
     }
 
+    section.categories .category .km h1 {
+        font-size: 4em;
+        
+    }
+
+    section.categories .category .cat-info-container {
+        position: relative;
+        overflow: hidden
+    }
+
+
+    section.categories .category .cat-info-container ul {
+        margin-top: 10%;
+        max-height: 90%;
+        overflow-y: auto;
+        box-sizing: border-box;
+
+    }
+
+    section.categories .category .cat-info-container .suscribe-btn {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        width: 90%;
+        margin: 0px auto;
+        transform: translate(-50%, 0);
+        padding: 8px auto;
+    }
+
 
 }
 
