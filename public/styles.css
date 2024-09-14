@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 
 * {
     margin: 0;
@@ -235,7 +237,7 @@ header .menu-button ion-icon.inactive {
 /* circuitos */
 section.categories {
     background-image: url("DSC_0022.jpg");
-    height: 100%;
+    /* height: 100%; */
     min-height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -243,9 +245,11 @@ section.categories {
     background-size: cover;
     padding: 40px 8px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
+
 
 }
 section.categories h1.cat-title {
@@ -256,8 +260,6 @@ section.categories h1.cat-title {
     font-weight: 800;
     text-transform: uppercase;
     font-style: italic;
-    
-
 }
 
 section.categories .category {
@@ -270,6 +272,7 @@ section.categories .category {
     transition: 0.2s;
     text-align: center;
     position: relative;
+    
 }
 
 section.categories .category.active {
@@ -292,7 +295,7 @@ section.categories .category .km {
 
 section.categories .category .km h1 {
     font-weight: 900;
-    font-size: 5em;
+    font-size: 3em;
     color: #fff;
     text-shadow: 2px 2px 0 #00000058, 2px 2px 2px rgba(41,18,11,0);
     text-transform: uppercase;
@@ -399,7 +402,7 @@ section.categories .sponsors-bar h1 {
 
 section.sponsors {
     background-image: url("MDM_9012f.jpg");
-    height: 75dvh;
+    height: 140dvh;
     min-height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -415,7 +418,7 @@ section.sponsors {
 
 section.sponsors .nav-cover {
     width: 100%;
-    height: 120px;
+    height: 100px;
     background: #3b3291;
     padding: 0px;
     margin: 0px;
@@ -434,20 +437,37 @@ section.sponsors .nav-cover h1 {
     text-transform: uppercase;
 }
 
+section.sponsors .sponsors-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100vh;
+}
+
+
+section.sponsors .sponsors-container img {
+    margin: 8px 0;
+    width: 240px;
+}
+
 footer {
-    height: 250px;
+    height: 25%;
     width: 100%;
     background: #00FABA;
     padding-top: 0.5em;
 }
 
 footer .social-media-container {
+    margin: 12px 0px;
     width: 100%;
     height: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 0px 12%;
+    padding: 16px 12%;
+    
 }
 
 footer .social-media-container a {
@@ -457,6 +477,30 @@ footer .social-media-container a {
 
 footer .social-media-container h4 {
     display: none;
+}
+
+footer .documents {
+    margin-top: 12px;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+footer .documents h4 {
+    display: block;
+    font-weight: 600;
+    color: #3b3291;
+    margin: 12px 0px;
+    font-size: 1.5em;
+    text-align: center;
+
+
+}
+
+footer .documents a {
+    font-size: 1.2em;
+    text-decoration: none;
+    margin: 2px 0px;
 }
 
 footer .logo-container {
@@ -485,7 +529,8 @@ footer .logo-container p span {
 }
 
 footer .hvdevs {
-    margin-top: 8px;
+    font-family: "Ubuntu", sans-serif !important;
+    margin-top: 50%;
     width: 100%;
     height: 40px;
     font-size: 1.2em;
@@ -607,24 +652,28 @@ footer .hvdevs p a {
         justify-content: space-around;
         padding-top: 120px;
         /* margin: auto 0px; */
-        height: 100dvh;
+        height: 100%;
         position: relative;
     }
-
+    
     
     section.categories h1.cat-title {
         margin: auto 0px;
+        font-size: 3em;
     }
-
+    
     section.categories .category  {
         margin: auto 0px;
-        cursor: pointer;;
+        cursor: pointer;
+        height: 200px;
+        width: 50%;
 
         
     }
 
     section.categories .category .cat-info-container ul {
         font-size: 1em;
+        margin-bottom: 5%;
     } 
     
     section.categories .category .cat-info-container ul li {
@@ -658,15 +707,17 @@ footer .hvdevs p a {
         border-radius: 2px 2px 5px 5px;
     }
 
+
     section.categories .sponsors-bar {
         width: 100%;
-        height: 140px;
+        height: 120px;
         background: #3b3291;
         position: absolute;
         bottom: -15%;
         padding: 4px 8px; 
         text-align: center;
     }
+
     
     section.categories .sponsors-bar h1 {
         font-weight: 800;
@@ -679,8 +730,25 @@ footer .hvdevs p a {
 
     }
 
+    section.sponsors {
+        height: 100vh;
+        display: flex;
+
+    }
+
+    section.sponsors .sponsors-container {
+        margin: auto 0px;
+        flex-direction: row;
+        height: 50vh;
+    }
+    
+    
+    section.sponsors .sponsors-container img {
+        width: 300px;
+    }
+
     section.categories .category .cat-info-container .suscribe-btn {
-        padding: 16px 30%;
+        padding: 16px 40%;
         margin: auto 12px;
         text-align: center;
         color: #fff;
@@ -688,6 +756,7 @@ footer .hvdevs p a {
     }
 
     footer {
+        height: 250px;
         padding: 0px 8px;
         display: flex;
         flex-direction: row;
@@ -695,21 +764,41 @@ footer .hvdevs p a {
     }
 
     footer .logo-container {
-        padding: 0 8px;
+        padding: 8px;
         width: 20%;
+        max-height: 100%;
+
 
     }
 
     footer .separator {
-        width: 40%;
+        width: 20%;
     }
 
     footer .social-media-container {
+        margin: 0px;
         display: flex;
         flex-direction: column;
-        padding: 16px 8px;
-        width: 20%;
+        padding: 32px 8px;
+        width: 10%;
         height: 100%;
+    }
+
+    footer .documents {
+        justify-content: flex-end;
+        width: 40%;
+        padding: 16px 0px;
+    }
+    footer .documents h4 {
+        text-align: start !important;
+        margin: 8px 0;
+        padding: 8px;
+    }
+
+    footer .documents a {
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 8px 8px;
     }
 
     footer .social-media-container h4 {
@@ -723,6 +812,7 @@ footer .hvdevs p a {
     }
 
     footer .hvdevs {
+        margin-top: 8px;
         width: 20%;
         height: 90%;
         background: #00FABA;
@@ -851,6 +941,23 @@ footer .hvdevs p a {
         align-items: center;
         justify-content: center;
 
+    }
+
+    section.sponsors {
+        height: 120vh;
+        display: flex;
+
+    }
+
+    section.sponsors .sponsors-container {
+        margin: auto 0px;
+        flex-direction: row;
+        height: 50vh;
+    }
+    
+    
+    section.sponsors .sponsors-container img {
+        width: 240px;
     }
 
     section.categories .category .km h1 {

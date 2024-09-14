@@ -18,7 +18,7 @@ let labels = [
   "Ciudad",
   "Circuito",
   "Talle camiseta",
-  "N° socio",
+  "Codigo de descuento",
 ];
 
 let talles = [
@@ -30,6 +30,10 @@ let talles = [
 ];
 
 let categories;
+
+
+let discounts;
+
 
 //! Obtenemos las categorías
 async function getCategories() {
@@ -58,6 +62,21 @@ async function getCategories() {
 }
 //! Llamamos la fx
 getCategories();
+
+//! Obtenemos los codigos de descuento
+async function getDiscounts() {
+  try {
+    const response = await fetch("https://api.mmrun.hvdevs.com/discounts");
+    // Obtenemos los descuentos
+    discounts = await response.json();
+    
+  }
+  catch (error) {
+    console.log(error)
+  }   
+}
+//! Llamamos la fx
+getDiscounts();
 
 let active = 1;
 
@@ -146,14 +165,17 @@ updateProgress();
 
 /* campo de texto del checkbox */
 
-// partnerCheckbox.addEventListener("change", () => {
-//   if (partnerCheckbox.checked) {
-//     partnerNumberInput.disabled = false;
-//   } else {
-//     partnerNumberInput.disabled = true;
-//     partnerNumberInput.value = "";
-//   }
-// });
+partnerCheckbox.addEventListener("change", () => {
+  if (partnerCheckbox.checked) {
+    partnerNumberInput.disabled = false;
+  } else {
+    partnerNumberInput.disabled = true;
+    partnerNumberInput.value = "";
+  }
+});
+
+
+
 
 /** @description Cada input tiene un rango de entrada, pasa al siguiente con focus */
 function dateListener() {
@@ -172,11 +194,11 @@ function dateListener() {
   dayInput.addEventListener("input", function () {
     moveFocus(dayInput, monthInput);
   });
-
+  
   monthInput.addEventListener("input", function () {
     moveFocus(monthInput, yearInput);
   });
-
+  
   yearInput.addEventListener("input", function () {
     if (yearInput.value.length === 4) {
       nextButton.focus();
@@ -185,8 +207,11 @@ function dateListener() {
 }
 
 dateListener();
+let discountApplied = false
 
 function showData() {
+  let percentaje = 0
+  let multiplier = 1
   const status = document.getElementById("payment-status");
   if (status) status.remove();
   const inputs = document.getElementsByClassName("items");
@@ -196,6 +221,29 @@ function showData() {
   let row = document.createElement("div");
   row.className = "row";
   let j = 0;
+
+  if(partnerCheckbox.checked === true) {
+    console.log(discounts)
+    const code = partnerNumberInput.value
+    for (let i = 0; i < discounts.length; i++) {
+      const e = discounts[i];
+      if(code.toUpperCase() === e.discountName) {
+        console.log("match")
+        percentaje = e.percentage / 100
+        
+        console.log(percentaje)
+      }
+      else {
+        console.log("NOT match")
+        inputs[13].value = "Codigo no existe"
+      }
+    }
+  }
+
+  multiplier = multiplier - percentaje
+
+  
+
   for (i = 0; i < inputs.length; i++) {
     let hr = document.createElement("hr");
     if (i === 0 || i === 7 || i === 10) {
@@ -225,6 +273,8 @@ function showData() {
       if (i === 11) {
         talle = talles.find((item) => item.id === inputs[11].value);
       }
+
+      
 
       // Crear el elemento p con el texto del valor
       var paragraph = document.createElement("p");
@@ -266,6 +316,16 @@ function showData() {
   h3.textContent = "Total:";
   const p = document.createElement("p");
   var category = categories.find((item) => item.title === inputs[10].value);
+
+  if(category.title !== "Caminata" && discountApplied === false){
+    if(!partnerCheckbox.checked) {
+      multiplier = 1
+      category.precio = category.precio
+    }
+    category.precio = category.precio * multiplier
+    discountApplied = true
+  }
+  
   p.textContent = `$ ${
     category ? (+category.precio).toFixed(2) : "No asignado"
   }`;
@@ -310,6 +370,8 @@ async function getFormData() {
   var age = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
   formData.append("runnerAge", age);
 
+
+
   //* agregamos el item para crear la preferencia:
   //! Some random item (test only)
   formData.append("title", "MMRUN'2024");
@@ -325,6 +387,8 @@ async function getFormData() {
   const url =
     "https://mp.mmrun.hvdevs.com/api/mercadopago/create-preference";
 
+  // const devUrl = "http://localhost:3088/api/mercadopago/create-preference"
+
   const options = {
     method: "POST",
     body: formData,
@@ -336,6 +400,7 @@ async function getFormData() {
     if (response.ok) {
       subButton.disabled = true;
       const data = await response.json();
+      // console.info("📃"+data)
       console.log(data.init_point);
       window.location.href = data.init_point;
     }
@@ -355,13 +420,21 @@ async function getFormData() {
 function handleQueryParamChange() {
   const urlParams = new URLSearchParams(window.location.search);
   const paramValue = urlParams.get("status");
+  const walkParam = urlParams.get("runner_id");
   console.log(paramValue);
+
+  let text = "El pago fue acreditado con éxito. Puede inscribir otro corredor, o volver a la página principal."
+
+  if(walkParam !== null ) {
+    console.info("🥇"+walkParam)
+    text = "Participante inscripto con con éxito. Puede inscribir otro corredor, o volver a la página principal."
+  }
 
   switch (paramValue) {
     case "approved": {
       Swal.fire({
         title: "Éxito",
-        text: "El pago fue acreditado con éxito. Puede inscribir otro corredor, o volver a la página principal.",
+        text: text,
         icon: "success",
         showDenyButton: true,
         confirmButtonText: "Inscribir otro corredor",
@@ -385,6 +458,27 @@ function handleQueryParamChange() {
       break;
     }
   }
+}
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+// var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  // captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
 }
 
 // EventListener para detectar cambios en la URL

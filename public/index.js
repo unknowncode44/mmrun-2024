@@ -71,7 +71,8 @@ function openMenu() {
 
 // expand category 
 let expanded = false
-
+let expandedIndex = null
+let expandedArray = []
 
 // parallax effect
 
@@ -80,7 +81,9 @@ const subtitle = document.getElementById("logo-subtitle")
 
 document.addEventListener('scroll', function(){
     let val = window.scrollY
-    
+
+    // console.log(val) // mobile 1624 ~ 1652
+
     if(menuOpen = true) {
         menuOpen = false
         menubutton.classList.remove("active")
@@ -212,41 +215,73 @@ function addCategories(arrayOfCategories) {
 }
 
 var divExpanded 
+var activeCard = false
 
-function expandCat(numb) {
+function collapseCat(numb){
 
+    expanded = false
+    activeCard = false
+    console.log("collapse se activo")
 
     let cate = document.getElementById("category"+numb)
     let km = document.getElementById("km"+numb)
     let u = document.getElementById("ul"+numb)
     let btn = document.getElementById("suscBtn"+numb)
 
+
+    cate.style.height = "100px"
+    km.style.top = "50%" 
+    u.style.display ="none"
+    btn.style.display="none"
+    if(screenSize > 600){
+        cate.style.height = "200px"
+        cate.style.width = "50%"
+        cate.style.margin = "auto 0"
+        
+    } 
+
+}
+
+function expandCat(numb) {
+
+    
+    let cate = document.getElementById("category"+numb)
+    let km = document.getElementById("km"+numb)
+    let u = document.getElementById("ul"+numb)
+    let btn = document.getElementById("suscBtn"+numb)
+    
     divExpanded = numb
     
     if(expanded == false) {
-        expanded = true
-        console.log(numb + " " + km)
+
+        for (let i = 0; i < circuits.length; i++) {
+            collapseCat(i)
+        }
+        
+        console.log("me active")
         cate.style.height = "100%"
-       
+        window.scrollTo(0, 1645)
+        
+        if(screenSize > 600){
+            window.scrollTo(0, 1700)
+        }
+        
         u.style.display ="flex"
         btn.style.display="flex"
         km.style.top="10%"
         
         if(screenSize > 600){
-            cate.style.width = "150%"
+            expanded = true
+            cate.style.width = "60%"
+            cate.style.transition = 
             btn.style.display="flex"
         }
-
+        
     }
     else {
+        activeCard = false
         expanded = false
-        cate.style.height = "100%"
-        km.style.top = "50%" 
-        u.style.display ="none"
-        btn.style.display="none"
-        if(screenSize > 600){
-            cate.style.width = "100%"
-        }   
+        collapseCat(numb)
     }
     
 }
